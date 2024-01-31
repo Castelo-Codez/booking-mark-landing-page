@@ -13,7 +13,7 @@ $accordionBtns.forEach(($el) => {
 const $form = document.querySelector("form");
 $form.addEventListener("submit", (e) => {
     let $value = $form.email.value;
-    if (validator.isEmail($value)) {
+    if (!validator.isEmail($value)) {
         e.preventDefault();
         $form.toggleAttribute("error", true);
     } else {
