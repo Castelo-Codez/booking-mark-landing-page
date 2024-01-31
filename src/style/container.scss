@@ -1,0 +1,23 @@
+.container {
+    padding: var(--main-padding-space) 15px;
+    @media (max-width: 576px) {
+        padding: 25px 15px;
+    }
+    margin-left: auto;
+    margin-right: auto;
+}
+$container-widths: (
+    576px: 540px,
+    768px: 720px,
+    992px: 960px,
+    1200px: 1140px,
+    1400px: 1320px,
+);
+
+@each $media, $width in $container-widths {
+    @media (min-width: $media) {
+        .container {
+            width: $width;
+        }
+    }
+}

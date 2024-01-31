@@ -1,0 +1,96 @@
+@import "./globals";
+section.accordion {
+    padding-bottom: var(--main-padding-space);
+    @include make-header();
+    ul {
+        margin-top: 20px;
+        padding: 0px 20px;
+        @media (min-width: 767.5px) {
+            max-width: 530px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        & + button {
+            @extend%primary-btn;
+            @extend%main-transition;
+            padding: 10px 20px;
+            color: var(--Primary-text-Clr);
+            display: block;
+            width: fit-content;
+            margin: 40px auto 0px;
+            border-radius: var(--main-radius);
+            cursor: pointer;
+            &:hover {
+                color: var(--Primary-SoftBlue);
+            }
+        }
+        li {
+            border-bottom: 1px solid hsl(229deg 5.23% 81.05%);
+            &:nth-child(1) {
+                @media (min-width: 767.5px) {
+                    border-top: 1px solid hsl(229deg 5.23% 81.05%);
+                }
+            }
+            > *:not(p) {
+                cursor: pointer;
+            }
+            & {
+                margin: 5px 0px;
+            }
+            button {
+                @include make-flex-layout(space-between, center);
+                padding: 15px 0px;
+                width: 100%;
+                background: none;
+                border: none;
+                .text {
+                    font-size: 14px;
+                    @media (min-width: 767.5px) {
+                        font-size: 15.7px;
+                    }
+                    color: var(--Primary-text-Clr2);
+                    font-weight: 500;
+                }
+                > .icon {
+                    span {
+                        &.up {
+                            display: none;
+                        }
+                    }
+                }
+                & + p {
+                    padding: 0px 0px 10px;
+                    line-height: 1.6;
+                    color: var(--Neutral-GrayishBlue);
+                    font-size: 13.5px;
+                    width: 98%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    text-transform: capitalize;
+                    @media (min-width: 991.4px) {
+                        width: 80%;
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    @extend%main-transition;
+                    display: none;
+                }
+            }
+            &.active {
+                button {
+                    > .icon {
+                        .up {
+                            display: block;
+                        }
+                        .down {
+                            display: none;
+                        }
+                    }
+                    & + p {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,82 @@
+footer {
+    --main-space: 40px;
+    background-color: #242946;
+    h3 {
+        svg {
+            * {
+                &:nth-child(1) {
+                    path {
+                        fill: var(--Primary-text-Clr);
+                    }
+                }
+            }
+        }
+    }
+    .container {
+        > ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            @media (min-width: 767.5px) {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            row-gap: var(--main-space);
+            li {
+                &:first-child {
+                    > ul {
+                        @media (min-width: 767.5px) {
+                            display: flex;
+                            align-items: center;
+                            column-gap: 20px;
+                        }
+                    }
+                    @media (min-width: 767.5px) {
+                        flex-direction: row;
+                        align-items: center;
+                        column-gap: 80px;
+                    }
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: var(--main-space);
+
+                    li {
+                        a {
+                            display: block;
+                            color: var(--Primary-text-Clr);
+                            text-decoration: none;
+                            text-align: center;
+                            &:hover {
+                                color: var(--Primary-SoftRed);
+                            }
+                        }
+                        &:not(:last-child) {
+                            margin-bottom: 10px;
+                            @media (min-width: 767.5px) {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+                &:last-child {
+                    ul {
+                        display: flex;
+                        align-items: center;
+                        column-gap: 20px;
+                        li {
+                            a {
+                                &:hover {
+                                    svg {
+                                        path {
+                                            fill: var(--Primary-SoftRed);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

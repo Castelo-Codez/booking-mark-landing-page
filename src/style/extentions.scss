@@ -1,0 +1,74 @@
+@import "./globals";
+section.extentions {
+    @include make-header();
+    ul {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 40px;
+        @media (min-width: 991.5px) {
+            flex-direction: row;
+            justify-content: center;
+            row-gap: 0;
+            column-gap: 40px;
+            align-items: flex-start;
+            @for $i from 2 through 3 {
+                > *:nth-child(#{$i}) {
+                    margin-top: calc($i * 15px);
+                }
+            }
+        }
+        li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            background-color: var(--Primary-text-Clr);
+            box-shadow: -2px 6px 13px #e7e1e1;
+            border-radius: var(--main-radius);
+            row-gap: 40px;
+
+            h3 {
+                color: var(--Primary-text-Clr2);
+                text-transform: capitalize;
+                text-align: center;
+
+                font-size: 1rem;
+                & + span {
+                    @media (min-width: 576px) {
+                        max-width: 31rem;
+                    }
+                    line-height: 1.5;
+                    color: var(--Neutral-GrayishBlue);
+                    font-weight: 500;
+                    text-align: center;
+                    padding: 0px 20px;
+                    display: block;
+                    margin-top: 20px;
+                }
+            }
+            button {
+                display: block;
+                padding: 14px 19px;
+                font-size: 16px;
+                cursor: pointer;
+                margin-top: 30px;
+                position: relative;
+                @extend%primary-btn;
+                @extend%main-transition;
+                border-radius: var(--main-radius);
+                color: var(--Primary-text-Clr);
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: -18px;
+                    width: 118%;
+                    height: 7px;
+                    bottom: 74px;
+                    background-image: url("../../assets/images/bg-dots.svg");
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+    }
+}

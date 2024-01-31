@@ -1,0 +1,7 @@
+@import "./globals";
+section {
+    padding-top: 6rem;
+    &.landing {
+        @include make-layout-1(-1);
+    }
+}

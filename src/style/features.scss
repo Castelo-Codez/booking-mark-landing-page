@@ -1,0 +1,113 @@
+@import "./globals";
+%main-line {
+    width: 100%;
+    height: 4px;
+    background-color: var(--Primary-SoftRed);
+    left: 0;
+    bottom: -33%;
+    z-index: 111111;
+    @extend%main-transition;
+}
+
+section.features {
+    @include make-header();
+    .tabs {
+        padding-top: 20px;
+        padding-bottom: 40px;
+
+        @include make-flex-layout(normal, center);
+        flex-direction: column;
+        @media (min-width: 991.5px) {
+            @include make-flex-layout(space-between, center);
+            flex-flow: row;
+            width: 55%;
+            margin: 20px auto 20px;
+        }
+        li {
+            width: 70%;
+            @include make-flex-layout(center, center);
+            padding: 10px 0px;
+            cursor: pointer;
+            & {
+                &:first-child {
+                    border-top: 1px solid var(--Neutral-GrayishBlue);
+                }
+                border-bottom: 1px solid var(--Neutral-GrayishBlue);
+            }
+            @media (min-width: 991.5px) {
+                &:first-child {
+                    border-top: 0;
+                }
+            }
+            button {
+                display: block;
+                width: fit-content;
+                padding: 10px;
+                text-align: center;
+                cursor: pointer;
+                background: none;
+                text-transform: capitalize;
+                border: none;
+                font-weight: 500;
+                color: var(--Neutral-GrayishBlue);
+                position: relative;
+                @extend%main-transition;
+                @media (min-width: 991.5px) {
+                    width: 100%;
+                    &::after {
+                        width: 100%;
+                    }
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    @extend%main-line;
+                    opacity: 0;
+                }
+                &:hover {
+                    color: var(--Primary-SoftRed);
+                }
+            }
+            &.active {
+                button {
+                    color: var(--Primary-text-Clr2);
+
+                    &::after {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    @include make-layout-1(1);
+    .container {
+        column-gap: 4%;
+        .image-container {
+            img {
+                width: 90%;
+                transform: translate(9%, -12%);
+            }
+        }
+        > .text {
+            display: none;
+            .content {
+                @keyframes moving {
+                    0% {
+                        transform: translateX(10%);
+                        opacity: 0;
+                    }
+                    100% {
+                        transform: translateX(0px);
+                        opacity: 1;
+                    }
+                }
+            }
+            &.active {
+                display: block;
+                .content {
+                    animation: moving 0.3s linear;
+                }
+            }
+        }
+    }
+}

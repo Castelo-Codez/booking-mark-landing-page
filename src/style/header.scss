@@ -1,0 +1,140 @@
+@import "./globals";
+%main-padding-space {
+    padding: 20px 0px;
+}
+
+header {
+    position: fixed;
+    z-index: 1111111;
+    width: 100%;
+    left: 0;
+    background-color: var(--Primary-text-Clr);
+
+    > .container {
+        @include make-flex-layout(space-between, center);
+        nav {
+            ul {
+                display: none;
+                @media (min-width: 991.5px) {
+                    @include make-flex-layout(normal, center);
+                }
+                li {
+                    &:not(:last-child) {
+                        padding-right: 30px;
+                        a {
+                            color: var(--Primary-text-Clr2);
+                            text-decoration: none;
+                            font-size: 16px;
+                            @extend%main-transition;
+                            &:hover {
+                                color: var(--Primary-SoftRed);
+                            }
+                        }
+                    }
+                    &:last-child {
+                        button {
+                            display: block;
+                            padding: 9px 25px;
+                            background-color: var(--Primary-SoftRed);
+                            border: none;
+                            font-weight: 500;
+                            color: var(--Primary-text-Clr);
+                            letter-spacing: 2px;
+                            border-radius: var(--main-radius);
+                            cursor: pointer;
+                            border: 1px solid var(--Primary-SoftRed);
+                            @extend%main-transition;
+                            &:hover {
+                                background-color: var(--Primary-text-Clr);
+                                color: var(--Primary-SoftRed);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .nav-container {
+            @media (min-width: 991.5px) {
+                display: none;
+            }
+            .nav-content {
+                background-color: #242b4bf2;
+                position: absolute;
+                z-index: 100000;
+                width: 100%;
+                height: 100vh;
+                left: 0;
+                top: 0;
+                padding: var(--main-padding-space) 15px 20px;
+                display: none;
+                > .container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-content: space-between;
+                    height: 100%;
+                    > * {
+                        flex-basis: 100%;
+                    }
+                    .header {
+                        @include make-flex-layout(space-between, center);
+                        & + ul {
+                            margin-top: -100px;
+
+                            li {
+                                --main-font-size: 20px;
+                                & {
+                                    position: relative;
+                                    &::before {
+                                        content: "";
+                                        position: absolute;
+                                        width: 100%;
+                                        height: 2px;
+                                        top: 0;
+                                        background-color: #4f546bba;
+                                    }
+                                }
+                                a {
+                                    @extend %main-padding-space;
+                                }
+                                a {
+                                    text-decoration: none;
+                                    color: var(--Primary-text-Clr);
+                                    font-size: 20px;
+                                    font-weight: normal;
+                                    letter-spacing: 4px;
+                                    font-size: var(--main-font-size);
+                                }
+                                button {
+                                    display: block;
+                                    margin-top: 30px;
+                                    width: 100%;
+                                    padding: 10px;
+                                    font-size: var(--main-font-size);
+                                    border: 2px solid;
+                                    color: var(--Primary-text-Clr);
+                                    border-radius: var(--main-radius);
+                                }
+
+                                @include make-flex-layout(center, center);
+                            }
+                            & + ul {
+                                @include make-flex-layout(center, center);
+                                li {
+                                    padding: 0px 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.active {
+                    display: block;
+                }
+            }
+            button {
+                border: none;
+                background: none;
+                cursor: pointer;
+            }
+        }
+    }
+}
